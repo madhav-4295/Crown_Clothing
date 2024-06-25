@@ -19,7 +19,6 @@ export const UserProvider =({children}) => {
             createUserDocFromAuth(user);
         }
         setCurrentUser(user);
-        console.log(user, "user comp");
         return unsubcribe
        })
     },[])
