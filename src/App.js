@@ -14,7 +14,7 @@ const App = () => {
         {/* When creating nested routes in React Router, a default child route can be rendered on its parent’s path using the index attribute on the child <Route> and omitting path/. */}
 
       <Route index element ={<Home />}/>
-      <Route path="shop" element={<Shop/>}/>
+      <Route path="shop/*" element={<Shop/>}/>
       <Route path="auth" element={<Authentication />} />
       <Route path="checkout" element = {<CheckOut/>} />
       </Route>
