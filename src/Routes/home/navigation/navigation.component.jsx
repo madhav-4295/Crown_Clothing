@@ -6,7 +6,7 @@ import { CartContext } from "../../../context/cart.context";
 import {signOutUser} from "../../../utils/firebase/firebase.utlis";
 import CartIcon from "../../../Components/cart-icon/cart-icon.component";
 import CartDropDown from "../../../Components/cart-dropdown/cart-dropdown-component";
-import "./navigation.styles.scss";
+import {NavigationContainer, LogoContainer, NavLinkContainer, NavLink} from "./navigation.styles";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -14,28 +14,28 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
+      <NavigationContainer>
+        <LogoContainer  to="/">
           <CrwnLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
+        </LogoContainer>
+        <NavLinkContainer>
+          <NavLink  to="/shop">
             SHOP
-          </Link>
+          </NavLink>
           {currentUser ? (
-            <span className="nav-link"  onClick={signOutUser}>
+            <NavLink as ="span" onClick={signOutUser}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/auth">
+            <NavLink to="/auth">
               SIGN IN
-            </Link>
+            </NavLink>
           )}
           
           <CartIcon />
-        </div>
+        </NavLinkContainer>
         {isCartOpen && <CartDropDown />}
-      </div>
+      </NavigationContainer>
 
       {/* The React Router <Outlet/> component (from react-router-dom) is used within the parent route element to indicate where a child route element should be rendered. */}
 
